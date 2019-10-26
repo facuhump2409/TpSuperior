@@ -3,8 +3,7 @@ package tpSuperior;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Regresivo extends NewtonGregory{
-	public ArrayList<double,double> 
+public class Regresivo extends NewtonGregory{ 
 	
 	public Regresivo(ArrayList<Punto> listaDePuntos) {
 		super(listaDePuntos);
@@ -17,13 +16,13 @@ public class Regresivo extends NewtonGregory{
 		int cantidadDePuntos = listaDePuntos.size();
 		int cantidadDePosiciones = this.sumatoria(cantidadDePuntos-1);
 		List<Double> listaDeOrdenes=  new ArrayList<Double>();
-		int columna = 1;
+		int cantidadReccorida = 1;
 		for(int pos=1; pos<cantidadDePuntos; pos++) {
 			if(pos<cantidadDePuntos) {
 				listaDeOrdenes.add(listaDePuntos.get(pos+1).getY() - listaDePuntos.get(pos).getY() / (listaDePuntos.get(pos+1).getX() - listaDePuntos.get(pos).getX()));
 				cantidadReccorida++;
 			}
-			if(pos>=cantidadDePuntos && pos < cantidadDePuntos+) {
+			if(pos>=cantidadDePuntos && pos < cantidadDePuntos+ 2) {
 				
 			}
 		}
