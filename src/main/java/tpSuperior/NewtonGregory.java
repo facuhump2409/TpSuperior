@@ -23,8 +23,8 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 	    return f; 
 	} 
 	public double calcularOrden(int pos,ArrayList<Punto>listaDePuntos,int cantidadDePosiciones) {
-		for (int n=0; n<cantidadDePosiciones, n++) 
-				if(pos<listaDePuntos.size()) {
+		for (int n=0; n<cantidadDePosiciones; n++) 
+				
 			
 		}
 	}
