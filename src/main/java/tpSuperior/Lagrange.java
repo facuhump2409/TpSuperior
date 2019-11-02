@@ -14,8 +14,7 @@ public class Lagrange extends MetodoUtilizado{
 
 	@Override
 	public void inicializar(ArrayList<Punto> listaDePuntos) {
-		ArrayList<Punto> listaDePuntosOrdenada = this.ordenarPuntos(listaDePuntos);
-		this.verSiEstaEquiespaciado(listaDePuntosOrdenada);
+		super.inicializar(listaDePuntos);
 		List <Double> x = listaDePuntosOrdenada.stream().map(punto -> punto.getX()).collect(Collectors.toList());
 		List <Double> y = listaDePuntosOrdenada.stream().map(punto -> punto.getY()).collect(Collectors.toList());
 		this.findPolynomialFactors (x, y);
@@ -75,11 +74,11 @@ public class Lagrange extends MetodoUtilizado{
 				  //double x[] = {1.0, 2.0,5.0};
 				  //double y[] = {3.0, 4.0,10.0};
 				  //Esto seria un ejemplo para test
-				  double x3= 1.0;
-				  double y3= 1.0;
+				  double x3= 5.0;
+				  double y3= 10.0;
 				  double x2= 2.0;
-				  double y2= 2.0;
-				  double x1= 3.0;
+				  double y2= 4.0;
+				  double x1= 1.0;
 				  double y1= 3.0;
 				  Punto p1= new Punto(x1,y1);
 				  Punto p2= new Punto(x2,y2);

@@ -8,6 +8,7 @@ public abstract class MetodoUtilizado {
 	protected String nombreMetodo;
 	public int grado;
 	boolean esEquispaciado;
+	ArrayList<Punto> listaDePuntosOrdenada;
 	
 	public boolean esEquispaciado() {
 		return this.esEquispaciado;
@@ -37,7 +38,10 @@ public abstract class MetodoUtilizado {
 		//El metodo corre cuando se inicializa, ahi se cargan todos los atributos
 		
 	}
-	public abstract void inicializar(ArrayList<Punto> listaDePuntos); //El metodo corre aca y ya se cargan los atributos
+	public void inicializar(ArrayList<Punto> listaDePuntos) {
+		this.listaDePuntosOrdenada = this.ordenarPuntos(listaDePuntos);
+		this.verSiEstaEquiespaciado(listaDePuntosOrdenada);
+	} //El metodo corre aca y ya se cargan los atributos
 	
 	public ArrayList<Punto> ordenarPuntos(ArrayList<Punto> listaDePuntos){
 		return new PuntoSorter(listaDePuntos).getSortedPuntoByX();
