@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class MetodoUtilizado {
 	public String polinomio;
 	public String pasos;
+	protected String nombreMetodo;
 	public int grado;
 	
 	public boolean esEquispaciado() {
@@ -12,6 +13,13 @@ public abstract class MetodoUtilizado {
 	}
 	public String getPolinomio() {
 		return this.polinomio;
+	}
+	public MetodoUtilizado() {
+		
+	}
+	public void runMethod(ArrayList<Punto> listaDePuntos) {
+		//Aca deberia correr el metodo
+		
 	}
 	public MetodoUtilizado(ArrayList<Punto> listaDePuntos) {
 		super();
@@ -33,5 +41,15 @@ public abstract class MetodoUtilizado {
 	}
 	public void setPolinomio(String polinomio) {
 		this.polinomio = polinomio;
+	}
+	public String getNombreMetodo() {
+		return nombreMetodo;
+	}
+	public void setNombreMetodo(String nombreMetodo) {
+		this.nombreMetodo = nombreMetodo;
+	}
+	@Override
+	public String toString() {
+		return nombreMetodo;
 	}
 }
