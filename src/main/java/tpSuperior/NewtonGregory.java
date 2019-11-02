@@ -2,8 +2,12 @@ package tpSuperior;
 
 import java.util.ArrayList;
 
-public abstract class NewtonGregory extends MetodoUtilizado{
+public class NewtonGregory extends MetodoUtilizado{
 
+	public NewtonGregory() {
+		nombreMetodo="Newton gregory";
+	}
+	
 	public NewtonGregory(ArrayList<Punto> listaDePuntos) {
 		super(listaDePuntos);
 	}
@@ -29,4 +33,10 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 //		}
 //	}
 	// NO COMMITEEN CODIGO QUE NO COMPILA. SLDS RODRI :)
+
+	@Override
+	public void inicializar(ArrayList<Punto> listaDePuntos) {
+		// TODO Auto-generated method stub
+		
+	}
 }

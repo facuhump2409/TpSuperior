@@ -6,6 +6,9 @@ import Jama.Matrix;
 
 public class Lagrange extends MetodoUtilizado{
 
+	public Lagrange() {
+		nombreMetodo="Lagrange";
+	}
 	public Lagrange(ArrayList<Punto> listaDePuntos) {
 		super(listaDePuntos);
 	}
