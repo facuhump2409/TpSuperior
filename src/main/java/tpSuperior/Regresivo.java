@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Regresivo extends NewtonGregory{ 
 	
-	public Regresivo(ArrayList<Punto> listaDePuntos) {
-		super(listaDePuntos);
+	public Regresivo() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

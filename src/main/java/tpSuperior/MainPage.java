@@ -192,6 +192,7 @@ public class MainPage {
 			lblPasosPolinomio.setText("Puntos insuficientes!");
 		}else {
 			lblPasosPolinomio.setText("Calculando con "+(MetodoUtilizado)cmbMetodo.getSelectedItem());
+			//(MetodoUtilizado)cmbMetodo.getSelectedItem().inicializar(listadoPuntos);
 		}
 	}
 	

@@ -3,13 +3,9 @@ package tpSuperior;
 import java.util.ArrayList;
 
 public class NewtonGregory extends MetodoUtilizado{
-
+	
 	public NewtonGregory() {
 		nombreMetodo="Newton gregory";
-	}
-	
-	public NewtonGregory(ArrayList<Punto> listaDePuntos) {
-		super(listaDePuntos);
 	}
 	static double calcularAn(double u, int n) 
 	{ 

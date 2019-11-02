@@ -1,6 +1,6 @@
 package tpSuperior;
 
-public class Punto {
+public class Punto implements Comparable<Punto>{
 	double x;
 	double y;
 	public double getX() {
@@ -23,4 +23,9 @@ public class Punto {
 		this.x=x;
 		this.y=y;
 	}
+	@Override
+	public int compareTo(Punto punto) {          
+	    return (this.getX() < punto.getX() ? -1 : 
+	            (this.getX() == punto.getX() ? 0 : 1));     
+	  }   
 }

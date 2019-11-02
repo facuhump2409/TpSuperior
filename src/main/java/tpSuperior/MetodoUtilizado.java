@@ -7,9 +7,13 @@ public abstract class MetodoUtilizado {
 	public String pasos;
 	protected String nombreMetodo;
 	public int grado;
+	boolean esEquispaciado;
 	
 	public boolean esEquispaciado() {
-		return false;
+		return this.esEquispaciado;
+	}
+	public void setEsEquispaciado(boolean esEquispaciado) {
+		this.esEquispaciado = esEquispaciado;
 	}
 	public String getPolinomio() {
 		return this.polinomio;
@@ -17,16 +21,27 @@ public abstract class MetodoUtilizado {
 	public MetodoUtilizado() {
 		
 	}
+	public void verSiEstaEquiespaciado(ArrayList<Punto> listaDePuntosOrdenada) {
+		int cantidadDeElementos = listaDePuntosOrdenada.size()-1; //para no pasarme de indice
+		double distanciaARespetar = listaDePuntosOrdenada.get(1).getX() - listaDePuntosOrdenada.get(0).getX(); 
+		for(int i=0; i<cantidadDeElementos;i++) {
+			if((listaDePuntosOrdenada.get(i+1).getX() - listaDePuntosOrdenada.get(i).getX()) != distanciaARespetar) {
+				this.setEsEquispaciado(false);
+				return;
+			}
+		}
+		this.setEsEquispaciado(true);
+	}
 	public void runMethod(ArrayList<Punto> listaDePuntos) {
 		//Aca deberia correr el metodo
+		//El metodo corre cuando se inicializa, ahi se cargan todos los atributos
 		
 	}
-	public MetodoUtilizado(ArrayList<Punto> listaDePuntos) {
-		super();
-		this.inicializar(listaDePuntos);
-	}
-	public abstract void inicializar(ArrayList<Punto> listaDePuntos);
+	public abstract void inicializar(ArrayList<Punto> listaDePuntos); //El metodo corre aca y ya se cargan los atributos
 	
+	public ArrayList<Punto> ordenarPuntos(ArrayList<Punto> listaDePuntos){
+		return new PuntoSorter(listaDePuntos).getSortedPuntoByX();
+	}    
 	public String getPasos() {
 		return pasos;
 	}

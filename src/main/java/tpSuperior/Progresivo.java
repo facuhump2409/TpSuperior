@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Progresivo extends NewtonGregory{
 
-	public Progresivo(ArrayList<Punto> listaDePuntos) {
-		super(listaDePuntos);
+	public Progresivo() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void inicializar(ArrayList<Punto> listaDePuntos) {
-		
+		//TODO cargar todo
 	}
 
 }
