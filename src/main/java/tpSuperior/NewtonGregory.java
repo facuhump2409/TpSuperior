@@ -3,11 +3,9 @@ package tpSuperior;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewtonGregory extends MetodoUtilizado{
+public abstract class NewtonGregory extends MetodoUtilizado{
 	List<Double> listaDeOrdenes=  new ArrayList<Double>();
-	public NewtonGregory() {
-		nombreMetodo="Newton gregory";
-	}
+
 	static double calcularAn(double u, int n) 
 	{ 
 	    double temp = u; 
@@ -53,7 +51,14 @@ public class NewtonGregory extends MetodoUtilizado{
 				}
 			}
 		}
+		this.calcularPolinomio(cantidadDePuntos,listaDePuntos);
+		this.setPasos("Primero: ordenamos la lista de puntos"+
+					"Segundo: Calculamos si es equiespaciado"
+					+ "Tercero: sacamos los ordenes"
+					+ "Cuarto: calculamos el polinomio de" + this.nombreMetodo);
 	}
+	public abstract void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos);
+	
 	public static void main (String args[]) {
 		  /*double x1= 1.0;
 		  double y1= 1.0;

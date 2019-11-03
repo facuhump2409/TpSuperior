@@ -105,7 +105,8 @@ public class MainPage {
 	        	}
 	        }
 	    });
-		cmbMetodo.addItem(new NewtonGregory());
+		cmbMetodo.addItem(new Progresivo());
+		cmbMetodo.addItem(new Regresivo());
 		cmbMetodo.addItem(new Lagrange());
 		
 		JLabel lblInformacionMetodo = new JLabel("Descripcion de metodo elegido:");

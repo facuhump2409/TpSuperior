@@ -7,11 +7,32 @@ public class Regresivo extends NewtonGregory{
 	
 	public Regresivo() {
 		super();
+		this.nombreMetodo = "NewtonGregory Regresivo";
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
-	public void inicializar(ArrayList<Punto> listaDePuntos) {
+	public void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos) {
+		int orden = 0;
+		int posicionOrden = 0;
+		for(int i=0; i<cantidadDePuntos;i++) {
+			if(i==0) {
+				this.setPolinomio(String.valueOf(listaDePuntos.get(i).getY())+ "+"); //la primera vez es Y inicial
+				orden++;
+			}
+			else {
+				String nuevoPolinomio = this.getPolinomio().concat(String.valueOf(this.listaDeOrdenes.get(posicionOrden))); //concateno el numero de orden
+				posicionOrden+= cantidadDePuntos-i;
+				for(int j=0;j<orden;j++) {
+					String puntoEnX = String.valueOf(listaDePuntos.get(j).getX());
+					nuevoPolinomio = nuevoPolinomio.concat("(x-"+ puntoEnX + ") ");
+				}
+				if(i+1 < cantidadDePuntos) {
+					nuevoPolinomio = nuevoPolinomio.concat("+"); //para que la ultima vez no me ponga el +					
+				}
+				this.setPolinomio(nuevoPolinomio);
+				orden++;
+			}
+		}
 		
 	}
 }
