@@ -23,6 +23,11 @@ import tpSuperior.Lagrange;
 import tpSuperior.MetodoUtilizado;
 import tpSuperior.NewtonGregory;
 import tpSuperior.Punto;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.border.CompoundBorder;
+import javax.swing.JEditorPane;
+import javax.swing.border.BevelBorder;
 
 public class MainPage {
 
@@ -30,7 +35,6 @@ public class MainPage {
 	private JTable tblPuntos;
 	private int filasMinimas=2;
 	private DefaultTableModel modelPuntos;
-	JLabel lblPasosPolinomio;
 	private JComboBox<Object> cmbMetodo;
 	private int auxCont=0;
 	/**
@@ -61,14 +65,19 @@ public class MainPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setForeground(new Color(0, 0, 139));
 		frame.setBounds(100, 100, 689, 465);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		
 		tblPuntos =new JTable(new DefaultTableModel(new Object[]{"Columnas X", "Columna Y"}, 0));
+		tblPuntos.setBackground(new Color(192, 192, 192));
+		tblPuntos.setToolTipText("");
+		tblPuntos.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		tblPuntos.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(173, 216, 230), new Color(186, 85, 211), null, null));
 		tblPuntos.setCellSelectionEnabled(true);
-		tblPuntos.setBounds(11, 96, 413, 208);
+		tblPuntos.setBounds(10, 110, 358, 230);
 		frame.getContentPane().add(tblPuntos);
 		modelPuntos = (DefaultTableModel) tblPuntos.getModel();
 		JTableHeader puntosHeader=new JTableHeader();
@@ -90,8 +99,12 @@ public class MainPage {
 		}
 		
 
-		JLabel lblTitulo = new JLabel("El titulo");
-		lblTitulo.setBounds(10, 28, 275, 14);
+		JLabel lblTitulo = new JLabel("Interpolaci\u00F3n");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Rockwell", Font.ITALIC, 40));
+		lblTitulo.setBackground(new Color(75, 0, 130));
+		lblTitulo.setForeground(new Color(100, 149, 237));
+		lblTitulo.setBounds(10, 28, 347, 42);
 		frame.getContentPane().add(lblTitulo);
 
 		cmbMetodo = new JComboBox<Object>();
@@ -109,31 +122,54 @@ public class MainPage {
 		cmbMetodo.addItem(new Regresivo());
 		cmbMetodo.addItem(new Lagrange());
 		
-		JLabel lblInformacionMetodo = new JLabel("Descripcion de metodo elegido:");
-		lblInformacionMetodo.setBounds(450, 126, 188, 30);
+		JLabel lblInformacionMetodo = new JLabel("Descripci\u00F3n del m\u00E9todo elegido:");
+		lblInformacionMetodo.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblInformacionMetodo.setHorizontalAlignment(SwingConstants.LEFT);
+		lblInformacionMetodo.setBounds(392, 102, 246, 30);
 		frame.getContentPane().add(lblInformacionMetodo);
 
-		JButton btnAyuda = new JButton("?");
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setBackground(new Color(139, 0, 139));
+		btnAyuda.setForeground(new Color(0, 0, 0));
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Clickeaste el boton!");
 			}
 		});
 		
-		btnAyuda.setBounds(434, 268, 89, 23);
+		btnAyuda.setBounds(401, 232, 89, 23);
 		frame.getContentPane().add(btnAyuda);
 
-		JButton btnFinalizar = new JButton("X");
-		btnFinalizar.setBounds(533, 268, 89, 23);
-		frame.getContentPane().add(btnFinalizar);
+		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.setBackground(new Color(255, 0, 0));
+		btnCerrar.setBounds(526, 232, 89, 23);
+		frame.getContentPane().add(btnCerrar);
 
-		JLabel lblMetodo = new JLabel("Metodo");
-		lblMetodo.setBounds(399, 28, 46, 14);
+		JLabel lblMetodo = new JLabel("Seleccione el m\u00E9todo a utilizar..");
+		lblMetodo.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblMetodo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMetodo.setBounds(367, 28, 271, 14);
 		frame.getContentPane().add(lblMetodo);
-
-		lblPasosPolinomio = new JLabel("Pasos y Polinomio:");
-		lblPasosPolinomio.setBounds(32, 310, 300, 64);
-		frame.getContentPane().add(lblPasosPolinomio);
+		
+		JLabel lblColumnaX = new JLabel("X");
+		lblColumnaX.setFont(new Font("Perpetua", Font.BOLD, 20));
+		lblColumnaX.setBounds(58, 92, 78, 14);
+		frame.getContentPane().add(lblColumnaX);
+		
+		JLabel lblColumnaY = new JLabel("Y");
+		lblColumnaY.setFont(new Font("Perpetua Titling MT", Font.BOLD, 20));
+		lblColumnaY.setBounds(260, 92, 46, 14);
+		frame.getContentPane().add(lblColumnaY);
+		
+		JLabel lblPolinomio = new JLabel("Polinomio:");
+		lblPolinomio.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblPolinomio.setBounds(10, 364, 126, 25);
+		frame.getContentPane().add(lblPolinomio);
+		
+		JLabel lblPasos = new JLabel("Pasos a seguir:");
+		lblPasos.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		lblPasos.setBounds(392, 292, 126, 25);
+		frame.getContentPane().add(lblPasos);
 
 		
 	}
@@ -171,6 +207,7 @@ public class MainPage {
 		String valorX;
 		String valorY;
 		Punto p;
+		JLabel lblInformacionMetodo = new JLabel();
 		ArrayList<Punto> listadoPuntos=new ArrayList<Punto>();
 		
 		System.out.println("Intentando calcular!");
@@ -190,9 +227,9 @@ public class MainPage {
 		}
 		
 		if(listadoPuntos.size()<2) {
-			lblPasosPolinomio.setText("Puntos insuficientes!");
+			lblInformacionMetodo.setText("Puntos insuficientes!");
 		}else {
-			lblPasosPolinomio.setText("Calculando con "+(MetodoUtilizado)cmbMetodo.getSelectedItem());
+			lblInformacionMetodo.setText("Calculando con "+(MetodoUtilizado)cmbMetodo.getSelectedItem());
 			//(MetodoUtilizado)cmbMetodo.getSelectedItem().inicializar(listadoPuntos);
 		}
 	}
