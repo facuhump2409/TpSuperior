@@ -1,5 +1,6 @@
 package tpSuperior;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 		int posicionListaDeOrdenes = 0;
 		int cantidadDePuntos = listaDePuntos.size();
 		this.listaDeOrdenes.clear();
+		
 		for(int orden=1; orden<cantidadDePuntos; orden++) {
 			int iteraciones = cantidadDePuntos-orden;
 			if(orden==1) { //hago esta diferencia porque la primera vez usas Y y las otras usas las ordenes
@@ -35,6 +37,7 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 					Punto siguiente = this.listaDePuntosOrdenada.get(j+orden);
 					Punto anterior = this.listaDePuntosOrdenada.get(j);
 					double resultado = (siguiente.getY()-anterior.getY())/(siguiente.getX()-anterior.getX());
+					//double resultadoRedondeado = round(resultado, 3);
 					listaDeOrdenes.add(resultado);
 					posicionListaDeOrdenes++;
 				}
@@ -46,11 +49,14 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 					double imagenSiguiente = listaDeOrdenes.get(posicionListaDeOrdenes-(cantidadDePuntos-orden));
 					double imagenAnterior = listaDeOrdenes.get(posicionListaDeOrdenes-(cantidadDePuntos-orden)-1);
 					double resultado = (imagenSiguiente-imagenAnterior)/ (xSiguiente-xAnterior);
-					listaDeOrdenes.add(resultado);
+					double resultadoRedondeado = round(resultado, 3);					
+					listaDeOrdenes.add(resultadoRedondeado);
 					posicionListaDeOrdenes++;
 				}
 			}
 		}
+		
+		
 		this.calcularPolinomio(cantidadDePuntos,listaDePuntos);
 		this.setPasos("Primero: ordenamos la lista de puntos"+
 					"Segundo: Calculamos si es equiespaciado"
@@ -58,6 +64,14 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 					+ "Cuarto: calculamos el polinomio de" + this.nombreMetodo);
 	}
 	public abstract void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos);
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = BigDecimal.valueOf(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
 	
 	public static void main (String args[]) {
 		  /*double x1= 1.0;
