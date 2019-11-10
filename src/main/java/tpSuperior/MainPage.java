@@ -3,31 +3,26 @@ package tpSuperior;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-
-import tpSuperior.Lagrange;
-import tpSuperior.MetodoUtilizado;
-import tpSuperior.NewtonGregory;
-import tpSuperior.Punto;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.border.CompoundBorder;
-import javax.swing.JEditorPane;
-import javax.swing.border.BevelBorder;
+import javax.swing.JTextField;
 
 public class MainPage {
 
@@ -37,6 +32,9 @@ public class MainPage {
 	private DefaultTableModel modelPuntos;
 	private JComboBox<Object> cmbMetodo;
 	private int auxCont=0;
+	private JTextField txtPolinomio;
+	private JTextField txtInformacionEjecucion;
+	private JTextField txtPasos;
 	/**
 	 * Launch the application.
 	 */
@@ -66,7 +64,7 @@ public class MainPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setForeground(new Color(0, 0, 139));
-		frame.setBounds(100, 100, 689, 465);
+		frame.setBounds(100, 100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -107,6 +105,14 @@ public class MainPage {
 		lblTitulo.setBounds(10, 28, 347, 42);
 		frame.getContentPane().add(lblTitulo);
 
+
+		JLabel lblInformacionMetodo = new JLabel("Descripci\u00F3n del m\u00E9todo elegido:");
+		lblInformacionMetodo.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblInformacionMetodo.setHorizontalAlignment(SwingConstants.LEFT);
+		lblInformacionMetodo.setBounds(392, 102, 246, 30);
+		frame.getContentPane().add(lblInformacionMetodo);
+		
+		
 		cmbMetodo = new JComboBox<Object>();
 		cmbMetodo.setBounds(392, 45, 246, 25);
 		frame.getContentPane().add(cmbMetodo);
@@ -116,18 +122,14 @@ public class MainPage {
 	        	if(auxCont%2==0) {
 	        		calcularDeSerPosible();
 	        	}
+	        	
 	        }
 	    });
 		cmbMetodo.addItem(new Progresivo());
 		cmbMetodo.addItem(new Regresivo());
 		cmbMetodo.addItem(new Lagrange());
-		
-		JLabel lblInformacionMetodo = new JLabel("Descripci\u00F3n del m\u00E9todo elegido:");
-		lblInformacionMetodo.setFont(new Font("Verdana", Font.BOLD, 12));
-		lblInformacionMetodo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblInformacionMetodo.setBounds(392, 102, 246, 30);
-		frame.getContentPane().add(lblInformacionMetodo);
 
+		
 		JButton btnAyuda = new JButton("Ayuda");
 		btnAyuda.setBackground(new Color(139, 0, 139));
 		btnAyuda.setForeground(new Color(0, 0, 0));
@@ -165,11 +167,33 @@ public class MainPage {
 		lblPolinomio.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblPolinomio.setBounds(10, 364, 126, 25);
 		frame.getContentPane().add(lblPolinomio);
+				
 		
-		JLabel lblPasos = new JLabel("Pasos a seguir:");
-		lblPasos.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		lblPasos.setBounds(392, 292, 126, 25);
-		frame.getContentPane().add(lblPasos);
+		JLabel lblPasosDescripcion = new JLabel("Pasos seguidos y descripcion:");
+		lblPasosDescripcion.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		lblPasosDescripcion.setBounds(392, 292, 300, 25);
+		frame.getContentPane().add(lblPasosDescripcion);
+		
+		txtPolinomio = new JTextField();
+		txtPolinomio.setEditable(false);
+		txtPolinomio.setEnabled(false);
+		txtPolinomio.setBounds(10, 386, 365, 64);
+		frame.getContentPane().add(txtPolinomio);
+		txtPolinomio.setColumns(10);
+		
+		txtInformacionEjecucion = new JTextField();
+		txtInformacionEjecucion.setEnabled(false);
+		txtInformacionEjecucion.setEditable(false);
+		txtInformacionEjecucion.setBounds(381, 143, 329, 78);
+		frame.getContentPane().add(txtInformacionEjecucion);
+		txtInformacionEjecucion.setColumns(10);
+		
+		txtPasos = new JTextField();
+		txtPasos.setEnabled(false);
+		txtPasos.setEditable(false);
+		txtPasos.setBounds(401, 339, 291, 111);
+		frame.getContentPane().add(txtPasos);
+		txtPasos.setColumns(10);
 
 		
 	}
@@ -199,6 +223,7 @@ public class MainPage {
 			System.out.println("Esta vacia!");
 			modelPuntos.removeRow(tblPuntos.getSelectedRow());
 		}
+		
 		// Si una tiene contenido y otra no
 	}
 	private void calcularDeSerPosible() {
@@ -207,7 +232,6 @@ public class MainPage {
 		String valorX;
 		String valorY;
 		Punto p;
-		JLabel lblInformacionMetodo = new JLabel();
 		ArrayList<Punto> listadoPuntos=new ArrayList<Punto>();
 		
 		System.out.println("Intentando calcular!");
@@ -227,10 +251,17 @@ public class MainPage {
 		}
 		
 		if(listadoPuntos.size()<2) {
-			lblInformacionMetodo.setText("Puntos insuficientes!");
+			txtInformacionEjecucion.setText("Puntos insuficientes!");
 		}else {
-			lblInformacionMetodo.setText("Calculando con "+(MetodoUtilizado)cmbMetodo.getSelectedItem());
-			//(MetodoUtilizado)cmbMetodo.getSelectedItem().inicializar(listadoPuntos);
+			MetodoUtilizado metodo=(MetodoUtilizado)cmbMetodo.getSelectedItem();
+			txtInformacionEjecucion.setText("Calculando con "+metodo.getNombreMetodo());
+			metodo.inicializar(listadoPuntos);
+			String mensaje=metodo.esEquispaciado()? "Los puntos son equiespaciados":"Los puntos no son equiespaciados";
+			mensaje+= "\n Los pasos seguidos fueron:"+metodo.getPasos();
+			mensaje+= "\n El grado del polinomio es :"+metodo.getGrado();
+			txtPasos.setText(mensaje);
+			txtPolinomio.setText(metodo.getPolinomio());
+			
 		}
 	}
 	
@@ -270,6 +301,7 @@ public class MainPage {
 	private boolean isNumeric(String strNum) {
 		try {
 			double d = Double.parseDouble(strNum);
+			
 		} catch (NumberFormatException | NullPointerException nfe) {
 			return false;
 		}

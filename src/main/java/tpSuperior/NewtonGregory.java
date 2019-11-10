@@ -58,12 +58,11 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 		
 		
 		this.calcularPolinomio(cantidadDePuntos,listaDePuntos);
-		this.setPasos("Primero: ordenamos la lista de puntos"+
-					"Segundo: Calculamos si es equiespaciado"
-					+ "Tercero: sacamos los ordenes"
-					+ "Cuarto: calculamos el polinomio de" + this.nombreMetodo);
+		this.setPasos("\n Primero: ordenamos la lista de puntos "+
+					"\n Segundo: Calculamos si es equiespaciado"
+					+ "\n Tercero: sacamos los ordenes"
+					+ "\n Cuarto: calculamos el polinomio de" + this.nombreMetodo);
 	}
-	public abstract void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos);
 	
 	public static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();

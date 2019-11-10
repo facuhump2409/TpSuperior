@@ -41,7 +41,10 @@ public abstract class MetodoUtilizado {
 	public void inicializar(ArrayList<Punto> listaDePuntos) {
 		this.listaDePuntosOrdenada = this.ordenarPuntos(listaDePuntos);
 		this.verSiEstaEquiespaciado(listaDePuntosOrdenada);
+		this.calcularPolinomio(listaDePuntosOrdenada.size(),listaDePuntosOrdenada);
 	} //El metodo corre aca y ya se cargan los atributos
+	
+	public abstract void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos);
 	
 	public ArrayList<Punto> ordenarPuntos(ArrayList<Punto> listaDePuntos){
 		return new PuntoSorter(listaDePuntos).getSortedPuntoByX();
@@ -71,4 +74,5 @@ public abstract class MetodoUtilizado {
 	public String toString() {
 		return nombreMetodo;
 	}
+	
 }

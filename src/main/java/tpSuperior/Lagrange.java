@@ -14,15 +14,7 @@ public class Lagrange extends MetodoUtilizado {
 		nombreMetodo = "Lagrange";
 	}
 
-	@Override
-	public void inicializar(ArrayList<Punto> listaDePuntos) {
-		super.inicializar(listaDePuntos);
-		List<Double> x = listaDePuntosOrdenada.stream().map(punto -> punto.getX()).collect(Collectors.toList());
-		List<Double> y = listaDePuntosOrdenada.stream().map(punto -> punto.getY()).collect(Collectors.toList());
-		this.findPolynomialFactors(x, y);
-		// TODO Auto-generated method stub
 
-	}
 
 	public double[] findPolynomialFactors(List<Double> x, List<Double> y) throws RuntimeException {
 		int n = x.size();
@@ -98,5 +90,14 @@ public class Lagrange extends MetodoUtilizado {
 				  metodoLagrange.inicializar(listadoPuntos);
 				  System.out.println (metodoLagrange.getPolinomio());
 		 */
+	}
+
+	@Override
+	public void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos) {
+
+		List<Double> x = listaDePuntosOrdenada.stream().map(punto -> punto.getX()).collect(Collectors.toList());
+		List<Double> y = listaDePuntosOrdenada.stream().map(punto -> punto.getY()).collect(Collectors.toList());
+		this.findPolynomialFactors(x, y);
+		
 	}
 }
