@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -138,6 +139,8 @@ public class MainPage {
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Clickeaste el boton!");
+				JOptionPane.showMessageDialog(null, "Mensaje de ayuda", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+				 
 			}
 		});
 		
@@ -145,6 +148,11 @@ public class MainPage {
 		frame.getContentPane().add(btnAyuda);
 
 		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		btnCerrar.setBackground(new Color(255, 0, 0));
 		btnCerrar.setBounds(526, 232, 89, 23);
 		frame.getContentPane().add(btnCerrar);
