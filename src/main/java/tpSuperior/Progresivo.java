@@ -14,8 +14,10 @@ public class Progresivo extends NewtonGregory{
 	
 	@Override
 	public void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos) {
+		super.calcularPolinomio(cantidadDePuntos,listaDePuntos);
 		int orden = 0;
 		int posicionOrden = 0;
+		this.setGrado(cantidadDePuntos - 1);
 		for(int i=0; i<cantidadDePuntos;i++) {
 			if(i==0) {
 				this.setPolinomio(String.valueOf(listaDePuntos.get(i).getY())+ "+"); //la primera vez es Y inicial
@@ -33,7 +35,7 @@ public class Progresivo extends NewtonGregory{
 				}
 				this.setPolinomio(nuevoPolinomio);
 				orden++;
-			}
+ 			}
 		}
 		
 	}

@@ -6,7 +6,7 @@ public abstract class MetodoUtilizado {
 	public String polinomio;
 	public String pasos;
 	protected String nombreMetodo;
-	public int grado;
+	public int grado = 0;
 	boolean esEquispaciado;
 	ArrayList<Punto> listaDePuntosOrdenada;
 	

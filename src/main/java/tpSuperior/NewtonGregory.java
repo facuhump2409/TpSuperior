@@ -22,12 +22,11 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 	        f += i; 
 	    return f; 
 	} 
-
+	
+	
 	@Override
-	public void inicializar(ArrayList<Punto> listaDePuntos) {
-		super.inicializar(listaDePuntos);
+	public void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos) {
 		int posicionListaDeOrdenes = 0;
-		int cantidadDePuntos = listaDePuntos.size();
 		this.listaDeOrdenes.clear();
 		
 		for(int orden=1; orden<cantidadDePuntos; orden++) {
@@ -49,7 +48,7 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 					double imagenSiguiente = listaDeOrdenes.get(posicionListaDeOrdenes-(cantidadDePuntos-orden));
 					double imagenAnterior = listaDeOrdenes.get(posicionListaDeOrdenes-(cantidadDePuntos-orden)-1);
 					double resultado = (imagenSiguiente-imagenAnterior)/ (xSiguiente-xAnterior);
-					double resultadoRedondeado = round(resultado, 3);					
+					double resultadoRedondeado = round(resultado, 3);
 					listaDeOrdenes.add(resultadoRedondeado);
 					posicionListaDeOrdenes++;
 				}
@@ -57,13 +56,13 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 		}
 		
 		
-		this.calcularPolinomio(cantidadDePuntos,listaDePuntos);
 		this.setPasos("\n Primero: ordenamos la lista de puntos "+
 					"\n Segundo: Calculamos si es equiespaciado"
 					+ "\n Tercero: sacamos los ordenes"
 					+ "\n Cuarto: calculamos el polinomio de" + this.nombreMetodo);
 	}
-	
+		
+		
 	public static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
 
@@ -72,37 +71,4 @@ public abstract class NewtonGregory extends MetodoUtilizado{
 	    return bd.doubleValue();
 	}
 	
-	public static void main (String args[]) {
-		  /*double x1= 1.0;
-		  double y1= 1.0;
-		  double x2= 1.05;
-		  double y2= 1.02470;
-		  double x3= 1.10;
-		  double y3= 1.04881;
-		  double x4= 1.15;
-		  double y4= 1.07238;
-		  double x5= 1.2;
-		  double y5= 1.09544;
-		  double x6= 1.25;
-		  double y6= 1.11803;
-		  double x7= 1.3;
-		  double y7= 1.14017;
-		  Punto p1= new Punto(x1,y1);
-		  Punto p2= new Punto(x2,y2);
-		  Punto p3= new Punto(x3,y3);
-		  Punto p4= new Punto(x4,y4);
-		  Punto p5= new Punto(x5,y5);
-		  Punto p6= new Punto(x6,y6);
-		  Punto p7= new Punto(x7,y7);
-		  ArrayList<Punto> listadoPuntos = new ArrayList<>();
-		  listadoPuntos .add(p1);
-		  listadoPuntos .add(p2);
-		  listadoPuntos .add(p3);
-		  listadoPuntos .add(p4);
-		  listadoPuntos .add(p5);
-		  listadoPuntos .add(p6);
-		  listadoPuntos .add(p7);
-		  MetodoUtilizado Ng = new NewtonGregory();
-		  Ng.inicializar(listadoPuntos);*/
-	} 
 }

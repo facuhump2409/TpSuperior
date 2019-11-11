@@ -12,9 +12,11 @@ public class Regresivo extends NewtonGregory{
 	}
 	@Override
 	public void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos) {
+		super.calcularPolinomio(cantidadDePuntos,listaDePuntos);
 		int orden = 0;
 		int cantidadDePuntosParaArray = cantidadDePuntos -1;
-		int posicionOrden = 3;
+		int posicionOrden = cantidadDePuntos -2;
+		this.setGrado(cantidadDePuntosParaArray);
 		for(int i=cantidadDePuntosParaArray; i>=0;i--) {
 			if(i==cantidadDePuntosParaArray) {
 				this.setPolinomio(String.valueOf(listaDePuntos.get(i).getY())+ "+"); //la primera vez es Y inicial
