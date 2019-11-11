@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.TableModelEvent;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTextField;
+import java.awt.ScrollPane;
 
 public class MainPage {
 
@@ -32,9 +34,9 @@ public class MainPage {
 	private DefaultTableModel modelPuntos;
 	private JComboBox<Object> cmbMetodo;
 	private int auxCont=0;
-	private JTextField txtPolinomio;
-	private JTextField txtInformacionEjecucion;
-	private JTextField txtPasos;
+	private JTextArea txtPolinomio;
+	private JTextArea txtInformacionEjecucion;
+	private JTextArea txtPasos;
 	/**
 	 * Launch the application.
 	 */
@@ -75,8 +77,8 @@ public class MainPage {
 		tblPuntos.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		tblPuntos.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(173, 216, 230), new Color(186, 85, 211), null, null));
 		tblPuntos.setCellSelectionEnabled(true);
-		tblPuntos.setBounds(10, 110, 358, 230);
-		frame.getContentPane().add(tblPuntos);
+		//tblPuntos.setBounds(195, 204, 358, 230);
+		//frame.getContentPane().add(tblPuntos);
 		modelPuntos = (DefaultTableModel) tblPuntos.getModel();
 		JTableHeader puntosHeader=new JTableHeader();
 		tblPuntos.setTableHeader(puntosHeader);
@@ -102,7 +104,7 @@ public class MainPage {
 		lblTitulo.setFont(new Font("Rockwell", Font.ITALIC, 40));
 		lblTitulo.setBackground(new Color(75, 0, 130));
 		lblTitulo.setForeground(new Color(100, 149, 237));
-		lblTitulo.setBounds(10, 28, 347, 42);
+		lblTitulo.setBounds(10, 5, 347, 42);
 		frame.getContentPane().add(lblTitulo);
 
 
@@ -155,12 +157,12 @@ public class MainPage {
 		
 		JLabel lblColumnaX = new JLabel("X");
 		lblColumnaX.setFont(new Font("Perpetua", Font.BOLD, 20));
-		lblColumnaX.setBounds(58, 92, 78, 14);
+		lblColumnaX.setBounds(20, 63, 78, 14);
 		frame.getContentPane().add(lblColumnaX);
 		
 		JLabel lblColumnaY = new JLabel("Y");
 		lblColumnaY.setFont(new Font("Perpetua Titling MT", Font.BOLD, 20));
-		lblColumnaY.setBounds(260, 92, 46, 14);
+		lblColumnaY.setBounds(201, 58, 46, 14);
 		frame.getContentPane().add(lblColumnaY);
 		
 		JLabel lblPolinomio = new JLabel("Polinomio:");
@@ -174,26 +176,34 @@ public class MainPage {
 		lblPasosDescripcion.setBounds(392, 292, 300, 25);
 		frame.getContentPane().add(lblPasosDescripcion);
 		
-		txtPolinomio = new JTextField();
+		txtPolinomio = new JTextArea();
 		txtPolinomio.setEditable(false);
 		txtPolinomio.setEnabled(false);
+		txtPolinomio.setLineWrap(true);
 		txtPolinomio.setBounds(10, 386, 365, 64);
 		frame.getContentPane().add(txtPolinomio);
 		txtPolinomio.setColumns(10);
 		
-		txtInformacionEjecucion = new JTextField();
+		txtInformacionEjecucion = new JTextArea();
 		txtInformacionEjecucion.setEnabled(false);
 		txtInformacionEjecucion.setEditable(false);
+		txtInformacionEjecucion.setLineWrap(true);
 		txtInformacionEjecucion.setBounds(381, 143, 329, 78);
 		frame.getContentPane().add(txtInformacionEjecucion);
 		txtInformacionEjecucion.setColumns(10);
 		
-		txtPasos = new JTextField();
+		txtPasos = new JTextArea();
 		txtPasos.setEnabled(false);
 		txtPasos.setEditable(false);
+		txtPasos.setLineWrap(true);
 		txtPasos.setBounds(401, 339, 291, 111);
 		frame.getContentPane().add(txtPasos);
 		txtPasos.setColumns(10);
+		
+		ScrollPane scrollPane = new ScrollPane();
+		scrollPane.setBounds(10, 76, 357, 290);
+		frame.getContentPane().add(scrollPane);
+		scrollPane.add(tblPuntos);
 
 		
 	}
