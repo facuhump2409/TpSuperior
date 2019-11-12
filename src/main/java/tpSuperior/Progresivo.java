@@ -17,7 +17,8 @@ public class Progresivo extends NewtonGregory{
 		super.calcularPolinomio(cantidadDePuntos,listaDePuntos);
 		int orden = 0;
 		int posicionOrden = 0;
-		this.setGrado(cantidadDePuntos - 1);
+		//this.setGrado(cantidadDePuntos - 1);
+		int cantidadDeCeros = 0;
 		for(int i=0; i<cantidadDePuntos;i++) {
 			if(i==0) {
 				this.setPolinomio(String.valueOf(listaDePuntos.get(i).getY())+ "+"); //la primera vez es Y inicial
@@ -25,6 +26,8 @@ public class Progresivo extends NewtonGregory{
 			}
 			else {
 				String nuevoPolinomio = this.getPolinomio().concat(String.valueOf(this.listaDeOrdenes.get(posicionOrden))); //concateno el numero de orden
+				if(this.listaDeOrdenes.get(posicionOrden) == 0)
+					cantidadDeCeros++;
 				posicionOrden+= cantidadDePuntos-i;
 				for(int j=0;j<orden;j++) {
 					String puntoEnX = String.valueOf(listaDePuntos.get(j).getX());
@@ -37,6 +40,7 @@ public class Progresivo extends NewtonGregory{
 				orden++;
  			}
 		}
+		this.setGrado(cantidadDePuntos - cantidadDeCeros -1);
 		
 	}
 

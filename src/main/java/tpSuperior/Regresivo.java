@@ -16,7 +16,8 @@ public class Regresivo extends NewtonGregory{
 		int orden = 0;
 		int cantidadDePuntosParaArray = cantidadDePuntos -1;
 		int posicionOrden = cantidadDePuntos -2;
-		this.setGrado(cantidadDePuntosParaArray);
+		//this.setGrado(cantidadDePuntosParaArray);
+		int cantidadDeCeros = 0;
 		for(int i=cantidadDePuntosParaArray; i>=0;i--) {
 			if(i==cantidadDePuntosParaArray) {
 				this.setPolinomio(String.valueOf(listaDePuntos.get(i).getY())+ "+"); //la primera vez es Y inicial
@@ -37,6 +38,7 @@ public class Regresivo extends NewtonGregory{
 				orden++;
 			}
 		}
+		this.setGrado(cantidadDePuntos - cantidadDeCeros -1);
 		
 	}
 }
