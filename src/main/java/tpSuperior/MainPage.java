@@ -88,7 +88,7 @@ public class MainPage {
 		tblPuntos.getModel().addTableModelListener(
 				new TableModelListener() 
 				{
-					@Override
+					
 					public void tableChanged(TableModelEvent e) {
 						chequearYAgregarCeldas();
 						calcularDeSerPosible();
@@ -204,7 +204,7 @@ public class MainPage {
 		txtPasos.setEnabled(false);
 		txtPasos.setEditable(false);
 		txtPasos.setLineWrap(true);
-		txtPasos.setBounds(401, 339, 291, 111);
+		txtPasos.setBounds(401, 316, 291, 134);
 		frame.getContentPane().add(txtPasos);
 		txtPasos.setColumns(10);
 		
