@@ -139,7 +139,7 @@ public class MainPage {
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Clickeaste el boton!");
-				JOptionPane.showMessageDialog(null, "Recuerde cargar de a pares los numeros (x,y) y por lo menos 2", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Recuerde cargar de a pares los numeros (x,y) y por lo menos 2 \n No repita los valores en x", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
 				 
 			}
 		});
