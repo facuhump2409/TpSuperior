@@ -212,6 +212,31 @@ public class MainPage {
 		scrollPane.setBounds(10, 76, 357, 290);
 		frame.getContentPane().add(scrollPane);
 		scrollPane.add(tblPuntos);
+		
+		JButton btnEspecializar = new JButton("Especializar");
+		btnEspecializar.setBackground(Color.BLUE);
+		btnEspecializar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(! "Puntos insuficientes!".equals(txtInformacionEjecucion.getText())) {
+					//Si hay puntos suficientes
+					String numero = JOptionPane.showInputDialog("Indique el valor a especializar");
+					if(isNumeric(numero)) {
+						calcularDeSerPosible();
+						MetodoUtilizado metodo=(MetodoUtilizado)cmbMetodo.getSelectedItem();
+						Double resultado=metodo.especializarPolinomio(Double.parseDouble(numero));
+						JOptionPane.showMessageDialog(null, "El polinomio especializado en "+numero+" es "+resultado, "Punto ok", JOptionPane.INFORMATION_MESSAGE);
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "Punto invalido", "Error de punto", JOptionPane.WARNING_MESSAGE);
+						
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "No hay puntos suficientes", "Error por falta de puntos", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		btnEspecializar.setBounds(635, 232, 110, 23);
+		frame.getContentPane().add(btnEspecializar);
 
 		
 	}
