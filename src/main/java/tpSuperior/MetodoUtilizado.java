@@ -2,6 +2,9 @@ package tpSuperior;
 
 import java.util.ArrayList;
 
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
 public abstract class MetodoUtilizado {
 	public String polinomio;
 	public String pasos;
@@ -46,6 +49,15 @@ public abstract class MetodoUtilizado {
 	
 	public abstract void calcularPolinomio(int cantidadDePuntos, ArrayList<Punto> listaDePuntos);
 	
+	public double especializarPolinomio(double puntoAEspecializar) {
+		Expression expresion = new ExpressionBuilder(this.polinomio)
+				.variables("X")
+				.build()
+				.setVariable("X", puntoAEspecializar);
+		
+		double resultado = expresion.evaluate();
+		return resultado;
+	}
 	public ArrayList<Punto> ordenarPuntos(ArrayList<Punto> listaDePuntos){
 		return new PuntoSorter(listaDePuntos).getSortedPuntoByX();
 	}    

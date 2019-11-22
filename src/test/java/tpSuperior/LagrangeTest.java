@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 
+import junit.framework.Assert;
+
 public class LagrangeTest {
 	
 	@Parameter
@@ -50,6 +52,8 @@ public class LagrangeTest {
 	public void calculaBienPolinomioPorLagrange1() {
 	  metodoL.inicializar(listadoPuntos1);
 	  System.out.println (metodoL.getPolinomio());
+	  double resultadoEsperado = 2.5;
+	  Assert.assertEquals(resultadoEsperado, metodoL.especializarPolinomio(0));
 	}  
 	
 	@Test

@@ -23,7 +23,6 @@ public class Punto implements Comparable<Punto>{
 		this.x=x;
 		this.y=y;
 	}
-	@Override
 	public int compareTo(Punto punto) {          
 	    return (this.getX() < punto.getX() ? -1 : 
 	            (this.getX() == punto.getX() ? 0 : 1));     
