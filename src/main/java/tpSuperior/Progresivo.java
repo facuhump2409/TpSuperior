@@ -31,7 +31,7 @@ public class Progresivo extends NewtonGregory{
 				posicionOrden+= cantidadDePuntos-i;
 				for(int j=0;j<orden;j++) {
 					String puntoEnX = String.valueOf(listaDePuntos.get(j).getX());
-					nuevoPolinomio = nuevoPolinomio.concat("(x-"+ puntoEnX + ") ");
+					nuevoPolinomio = nuevoPolinomio.concat("(X-"+ puntoEnX + ") ");
 				}
 				if(i+1 < cantidadDePuntos) {
 					nuevoPolinomio = nuevoPolinomio.concat("+"); //para que la ultima vez no me ponga el +					

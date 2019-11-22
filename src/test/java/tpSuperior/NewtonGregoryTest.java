@@ -69,6 +69,20 @@ public class NewtonGregoryTest {
 		Assert.assertTrue(metodoNGR.listaDeOrdenes.stream().allMatch(punto -> listaDeseada.contains(punto)));
 	}
 	
+	@Test
+	public void especializaBienRegresivo() { // ejemplo de la carpeta
+		metodoNGR.inicializar(listadoPuntos1);
+		System.out.println(metodoNGR.getPolinomio());
+		Assert.assertTrue(151 == metodoNGR.especializarPolinomio(7));
+	}
+	
+	@Test
+	public void especializaBienProgresivo() { // ejemplo de la carpeta
+		metodoNGP.inicializar(listadoPuntos1);
+		System.out.println(metodoNGP.getPolinomio());
+		Assert.assertTrue(3 == metodoNGP.especializarPolinomio(3));
+	}
+	
 	/*
 	@Test
 	public void calculaBienLosOrdenesYProgresivo2() { // ejemplo de la carpeta

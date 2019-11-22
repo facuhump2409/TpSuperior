@@ -29,7 +29,7 @@ public class Regresivo extends NewtonGregory{
 				int posicionInicialProgresivo = cantidadDePuntosParaArray;
 				for(int j=0;j<orden;j++,posicionInicialProgresivo--) {
 					String puntoEnX = String.valueOf(listaDePuntos.get(posicionInicialProgresivo).getX());
-					nuevoPolinomio = nuevoPolinomio.concat("(x-"+ puntoEnX + ") "); 
+					nuevoPolinomio = nuevoPolinomio.concat("(X-"+ puntoEnX + ") "); 
 				}
 				if(orden+1 < cantidadDePuntos) {
 					nuevoPolinomio = nuevoPolinomio.concat("+"); //para que la ultima vez no me ponga el +					
