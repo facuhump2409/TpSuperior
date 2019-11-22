@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -25,6 +24,8 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.JTextField;
+import java.awt.ScrollPane;
 
 public class MainPage {
 
@@ -87,7 +88,7 @@ public class MainPage {
 		tblPuntos.getModel().addTableModelListener(
 				new TableModelListener() 
 				{
-					@Override
+					
 					public void tableChanged(TableModelEvent e) {
 						chequearYAgregarCeldas();
 						calcularDeSerPosible();
@@ -138,7 +139,7 @@ public class MainPage {
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Clickeaste el boton!");
-				JOptionPane.showMessageDialog(null, "Mensaje de ayuda", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Recuerde cargar de a pares los numeros (x,y) y por lo menos 2 \n No repita los valores en x", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
 				 
 			}
 		});
@@ -203,7 +204,7 @@ public class MainPage {
 		txtPasos.setEnabled(false);
 		txtPasos.setEditable(false);
 		txtPasos.setLineWrap(true);
-		txtPasos.setBounds(401, 339, 291, 111);
+		txtPasos.setBounds(401, 316, 291, 134);
 		frame.getContentPane().add(txtPasos);
 		txtPasos.setColumns(10);
 		
